@@ -1,0 +1,14 @@
+name = "ITSOL"
+uuid = "d5f7a247-b52f-4d20-a862-6998306c65a0"
+authors = ["Juha Heiskala <juha.t.heiskala@iki.fi>"]
+version = "0.1.0"
+
+[deps]
+ITSOL_2_jll = "00902081-cde0-5369-89f6-850dc9512c44"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+ZITSOL_1_jll = "dd94201c-7435-5bf3-a1a1-33dc1dbf1631"
+
+[compat]
+ITSOL_2_jll = "0.1.0"
+ZITSOL_1_jll = "0.1.0"
+julia = "1.6"
