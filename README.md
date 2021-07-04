@@ -1,5 +1,5 @@
-ITSOL
-=====
+ITerSOLvers
+===========
 
 ITerative SOLvers package.
 ITSOL is wrapper for ITSOL_2 and ZITSOL_1 libries: https://www-users.cs.umn.edu/~saad/software/ITSOL/
