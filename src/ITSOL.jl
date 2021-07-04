@@ -73,7 +73,7 @@ function ilu0(A::SparseMatrixCSC{T}, milu) where T <: Number
     iLU = ILUfac{T}(A.n, C_NULL, C_NULL, C_NULL, C_NULL)
 
     if T <: Real
-        f = ccall((:ilukC, libitsol2), Int32, (Int32, Ref{SpaFmt}, Ref{ILUfac}, Cint, Ptr{Cvoid}),
+        f = ccall((:itsol_pc_ilukC, libitsol2), Int32, (Int32, Ref{SpaFmt}, Ref{ILUfac}, Cint, Ptr{Cvoid}),
                   Cint(0), itsolA, iLU, Cint(milu), C_NULL)
     else
         f = ccall((:zilukC, libzitsol1), Int32, (Int32, Ref{SpaFmt}, Ref{ILUfac}, Cint, Ptr{Cvoid}),
@@ -97,11 +97,11 @@ function iluc(A::SparseMatrixCSC{T}, droptol, milu) where T <: Number
     inputILU = ILUfac{T}(A.n, C_NULL, C_NULL, C_NULL, C_NULL)
 
     if T<:Real
-        f = ccall((:CSClumC, libitsol2), Int32, (Ref{SpaFmt}, Ref{ILUfac}, Cint), itsolA, inputILU, Cint(0))
+        f = ccall((:itsol_CSClumC, libitsol2), Int32, (Ref{SpaFmt}, Ref{ILUfac}, Cint), itsolA, inputILU, Cint(0))
     
         iLU = ILUfac{T}(A.n, C_NULL, C_NULL, C_NULL, C_NULL)
 
-        f = ccall((:ilutc, libitsol2), Cint, (Ref{ILUfac}, Ref{ILUfac}, Cint, Cdouble, Cint, Cint, Ptr{Cvoid}),
+        f = ccall((:itsol_pc_ilutc, libitsol2), Cint, (Ref{ILUfac}, Ref{ILUfac}, Cint, Cdouble, Cint, Cint, Ptr{Cvoid}),
                   inputILU, iLU, Cint(A.n), Cdouble(droptol), Cint(5), Cint(milu), C_NULL)
     else
         f = ccall((:zCSClumC, libzitsol1), Int32, (Ref{SpaFmt}, Ref{ILUfac}, Cint), itsolA, inputILU, Cint(0))
@@ -137,7 +137,7 @@ function ilutp(A::SparseMatrixCSC{T}, droptol, thresh, milu, udiag) where T<:Num
     lfilA[7] = A.n
 
     if T<:Real
-        f = ccall((:ilutpC, libitsol2), Int32,
+        f = ccall((:itsol_pc_ilutpC, libitsol2), Int32,
                   (Ref{SpaFmt}, Ptr{Cdouble}, Ptr{Cint}, Cdouble, Cint, Ref{IluSpar}, Cint),
                   itsolA, pointer(droptolA), pointer(lfilA), thresh, Cint(A.n), iLU, Cint(udiag))
     else

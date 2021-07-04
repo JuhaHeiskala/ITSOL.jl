@@ -9,6 +9,6 @@ SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 ZITSOL_1_jll = "dd94201c-7435-5bf3-a1a1-33dc1dbf1631"
 
 [compat]
-ITSOL_2_jll = "0.1.0"
-ZITSOL_1_jll = "0.1.0"
+ITSOL_2_jll = "0.1.1"
+ZITSOL_1_jll = "0.1.1"
 julia = "1.6"
