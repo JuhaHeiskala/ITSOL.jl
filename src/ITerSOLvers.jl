@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 
-module ITSOL
+module ITerSOLvers
 
 using SparseArrays
 import ITSOL_2_jll
